@@ -1,5 +1,5 @@
 ![](images/ez-firewall.PNG)
-The easiest way to implement iptables
+*The easiest way to implement iptables*
 
 This tool utilizes iptables for easily implementing a default drop policy for a host-based firewall.
 
@@ -19,6 +19,6 @@ Fortunately, for protocols that require multiple ports to be opened, ez-firewall
 ### Adding More Rules:
 Firewall rules are formatted in a dictionary-list and can be added to and modified as needed.
 
-**The format is as follows:** ```{"protocol 1":["INPUT chain rule","OUTPUT chain rule","protocol 2":["INPUT chain rule 1","OUTPUT chain rule 1","INPUT chain rule 2","OUTPUT chain rule 2"]}```
+**The format is as follows:** ```{"protocol 1":["INPUT chain rule","OUTPUT chain rule"],"protocol 2":["INPUT chain rule 1","OUTPUT chain rule 1","INPUT chain rule 2","OUTPUT chain rule 2"]}```
 
 **Example rule:** ```{"web":["iptables -A INPUT -p tcp -m multiport --sports 80,443 -m state --state ESTABLISHED -j ACCEPT","iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m state --state NEW,ESTABLISHED -j ACCEPT"]}```
